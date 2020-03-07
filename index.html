@@ -117,7 +117,7 @@
       
 
       
-      <h2 id="事情发生在某次使用terminal提交git时"><a href="#事情发生在某次使用terminal提交git时" class="headerlink" title="事情发生在某次使用terminal提交git时"></a>事情发生在某次使用terminal提交git时</h2><p>  当时  <strong>git push -u origin tmp</strong>  后突然报错。<br>  刚开始我还以为是我的文件中出现了冲突或者是我的命令出错了。然后转而使用sourceTree进行提交。也报错。出现了以下错误。<br><img src="/images/blog1_git_push.png" alt="git提交报错"><br>  同时，我发现在sourceTree中我的代码仍然只是提交了本地，远端并没有出现我的提交。谷歌百度了很多解决方案。包括本地新建lock文件，寻找引用ref文件并删除，最后发现并没有用 <del>主要是我没找到ref文件</del>。<br>  最后没有办法的我只能使用企业文化，备份好文件后把库删了重新拉了一个。然后就惊奇的发现，远端出现了我刚刚显示未提交的的代码！<br>  最后我推测应该是我提交时重复提交了。系统收到了我的文件但是并没有改flag。导致我显示文件未提交到远端，同时无法再次提交此次更新。<br>  所以大家以后出现相同的错误，不妨备份一下，直接重拉一个库。省时又好用。</p>
+      <h2 id="事情发生在某次使用terminal提交git时"><a href="#事情发生在某次使用terminal提交git时" class="headerlink" title="事情发生在某次使用terminal提交git时"></a>事情发生在某次使用terminal提交git时</h2><p>  当时  <strong>git push -u origin tmp</strong>  后突然报错。<br>  刚开始我还以为是我的文件中出现了冲突或者是我的命令出错了。然后转而使用sourceTree进行提交。也报错。出现了以下错误。<br><img src="/images/blog1_git_push.png" alt="git提交报错"><br>  同时，我发现在sourceTree中我的代码仍然只是提交了本地，远端并没有出现我的提交。谷歌百度了很多解决方案。包括本地新建lock文件，寻找引用ref文件并删除，最后发现并没有用<del>主要是我没找到ref文件</del>。<br>  最后没有办法的我只能使用企业文化，备份好文件后把库删了重新拉了一个。然后就惊奇的发现，远端出现了我刚刚显示未提交的的代码！<br>  最后我推测应该是我提交时重复提交了。系统收到了我的文件但是并没有改flag。导致我显示文件未提交到远端，同时无法再次提交此次更新。<br>  所以大家以后出现相同的错误，不妨备份一下，直接重拉一个库。省时又好用。</p>
 
       
       <!-- reward -->
