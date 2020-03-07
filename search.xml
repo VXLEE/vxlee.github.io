@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>firstBlog</title>
+    <title>git push 出现permission denied.</title>
     <url>/2020/03/07/firstBlog/</url>
-    <content><![CDATA[<p>title: git push 出现permission denied.<br>date: 2020-03-07 01:47:16<br>categories: git<br>tags:[git, push, permission denied]</p>
-<h1 id="test111"><a href="#test111" class="headerlink" title="test111"></a>test111</h1><p><img src="/images/blog1_git_push.png" alt="git报错"></p>
+    <content><![CDATA[<h1 id="test111"><a href="#test111" class="headerlink" title="test111"></a>test111</h1><p><img src="/images/blog1_git_push.png" alt="git报错" title="如图"></p>
 ]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>push</tag>
+        <tag>permission denied</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>

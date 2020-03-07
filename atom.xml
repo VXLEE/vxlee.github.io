@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-07T17:23:44.477Z</updated>
+  <updated>2020-03-07T17:28:31.316Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>firstBlog</title>
+    <title>git push 出现permission denied.</title>
     <link href="http://yoursite.com/2020/03/07/firstBlog/"/>
     <id>http://yoursite.com/2020/03/07/firstBlog/</id>
-    <published>2020-03-06T17:47:16.353Z</published>
-    <updated>2020-03-07T17:23:44.477Z</updated>
+    <published>2020-03-06T17:47:16.000Z</published>
+    <updated>2020-03-07T17:28:31.316Z</updated>
     
     <summary type="html">
     
@@ -29,14 +29,21 @@
       
         
         
-          &lt;p&gt;title: git push 出现permission denied.&lt;br&gt;date: 2020-03-07 01:47:16&lt;br&gt;categories: git&lt;br&gt;tags:[git, push, permission denied]&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;test111&quot;&gt;&lt;a href=&quot;#test111&quot; class=&quot;headerlink&quot; title=&quot;test111&quot;&gt;&lt;/a&gt;test111&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/blog1_git_push.png&quot; alt=&quot;git报错&quot;
         
       
     
     </summary>
     
     
+      <category term="git" scheme="http://yoursite.com/categories/git/"/>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="push" scheme="http://yoursite.com/tags/push/"/>
+    
+      <category term="permission denied" scheme="http://yoursite.com/tags/permission-denied/"/>
     
   </entry>
   
