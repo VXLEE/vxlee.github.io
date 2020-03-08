@@ -117,7 +117,7 @@
       
 
       
-      <h2 id="collectionViewCell-中元素大小变化"><a href="#collectionViewCell-中元素大小变化" class="headerlink" title="collectionViewCell 中元素大小变化"></a>collectionViewCell 中元素大小变化</h2><p>&ensp;故事从某次在cell中添加了一个imageView说起。图片的大小、cell大小都给予了约束。但是在复用时仍然出现cell大小更改的情况。</p>
+      <h2 id="collectionViewCell-中元素大小变化"><a href="#collectionViewCell-中元素大小变化" class="headerlink" title="collectionViewCell 中元素大小变化"></a>collectionViewCell 中元素大小变化</h2><p>&nbsp;&nbsp;故事从某次在cell中添加了一个imageView说起。图片的大小、cell大小都给予了约束。但是在复用时仍然出现cell大小更改的情况。</p>
 <p>经过百度，发现有以下情况kennel导致：</p>
 <ol>
 <li><p>** 再不知道我哪里没有加好约束; **</p>
@@ -128,7 +128,7 @@
 </li>
 </ol>
 <p>第一个原因在之前就被我排除了。因为他们的大小都是被固定的。之后就是cell复用时的处理，每一个cell我都用利用其类名作为其tag（我的类都只在一个cel中使用，所以不会出现错误）。<br>在这种情况仍然无法解决的情况下，我开始一步一步的寻找我的cell中imageView的bounds更改的时机。在单步执行加上po出值之后，发现在复用中bounds完全没有问题。但是返回后却突然就出现了更改。<br>最后，找了一位大佬来帮我看，发现是我命名的问题。我的命名就是           <code>UIImageView* imageView</code><br><strong>* 这导致我的图像与系统默认的图像出现了重复。所以在返回时，系统无法分辨，导致我的imageView大小复用时出现变化。*</strong></p>
-<h3 id="当然，这里还有一个小插曲。"><a href="#当然，这里还有一个小插曲。" class="headerlink" title="当然，这里还有一个小插曲。"></a>当然，这里还有一个小插曲。</h3><p>在我更改了我的imageView的命名后，仍然出现了这个问题。那么这个时候问题出现在哪里呢？<br>因为我是用的xib来做的cell，所以有将视图与定义连起来，在更改了命名后，连接中的命名仍然未更改，导致大小错乱。这个时候，就需要删除连线，重来一次即可！<br>到此，cell复用中的问题解决。</p>
+<h3 id="当然，这里还有一个小插曲。"><a href="#当然，这里还有一个小插曲。" class="headerlink" title="当然，这里还有一个小插曲。"></a>当然，这里还有一个小插曲。</h3><p>在我更改了我的imageView的命名后，仍然出现了这个问题。那么这个时候问题出现在哪里呢？<br>因为我是用的xib来做的cell，所以有将视图与定义连起来，在更改了命名后，连接中的命名仍然未更改，导致大小错乱。这个时候，就需要删除连线，重来一次即可！<br>到此，cell复用中元素大小变化的问题解决。</p>
 <h3 id="回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！"><a href="#回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！" class="headerlink" title="回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！"></a>回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！</h3>
       
       <!-- reward -->
