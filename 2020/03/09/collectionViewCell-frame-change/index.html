@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    tags |  vxlee.s Learning way to noHair
+    collectionViewCell_frame_change |  vxlee.s Learning way to noHair
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,13 +35,244 @@
   <div id="app">
     <main class="content">
       <section class="outer">
+  <article id="post-collectionViewCell-frame-change" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  collectionViewCell_frame_change
+</h1>
   
-    <h1 class="page-type-title">标签</h1>
-    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ios/" rel="tag">Ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collectionViewCell/" rel="tag">collectionViewCell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imageView/" rel="tag">imageView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission-denied/" rel="tag">permission denied</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/push/" rel="tag">push</a></li></ul>
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/09/collectionViewCell-frame-change/" class="article-date">
+  <time datetime="2020-03-08T16:15:09.000Z" itemprop="datePublished">2020-03-09</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Ios%E5%BC%80%E5%8F%91/">Ios开发</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">492字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="collectionViewCell-中元素大小变化"><a href="#collectionViewCell-中元素大小变化" class="headerlink" title="collectionViewCell 中元素大小变化"></a>collectionViewCell 中元素大小变化</h2><p>  故事从某次在cell中添加了一个imageView说起。图片的大小、cell大小都给予了约束。但是在复用时仍然出现cell大小更改的情况。</p>
+<p>  经过百度，发现有以下情况kennel导致：</p>
+<ol>
+<li><p>** 再不知道我哪里没有加好约束; **</p>
+</li>
+<li><p>** cell复用时没有做好相对应的处理；**</p>
+</li>
+<li><p>** 不知道原因的疑难杂症。**</p>
+<p>第一个原因在之前就被我排除了。因为他们的大小都是被固定的。之后就是cell复用时的处理，每一个cell我都用利用其类名作为其tag（我的类都只在一个cel中使用，所以不会出现错误）。<br>在这种情况仍然无法解决的情况下，我开始一步一步的寻找我的cell中imageView的bounds更改的时机。在单步执行加上po出值之后，发现在复用中bounds完全没有问题。但是返回后却突然就出现了更改。<br>最后，找了一位大佬来帮我看，发现是我命名的问题。我的命名就是           <code>UIImageView* imageView</code><br><strong>* 这导致我的图像与系统默认的图像出现了重复。所以在返回时，系统无法分辨，导致我的imageView大小复用时出现变化。*</strong></p>
+<h3 id="当然，这里还有一个小插曲。"><a href="#当然，这里还有一个小插曲。" class="headerlink" title="当然，这里还有一个小插曲。"></a>当然，这里还有一个小插曲。</h3><p>在我更改了我的imageView的命名后，仍然出现了这个问题。那么这个时候问题出现在哪里呢？<br>因为我是用的xib来做的cell，所以有将视图与定义连起来，在更改了命名后，连接中的命名仍然未更改，导致大小错乱。这个时候，就需要删除连线，重来一次即可！<br>到此，cell复用中的问题解决。</p>
+<h3 id="回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！"><a href="#回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！" class="headerlink" title="回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！"></a>回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！</h3></li>
+</ol>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/09/collectionViewCell-frame-change/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ios/" rel="tag">Ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/collectionViewCell/" rel="tag">collectionViewCell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/imageView/" rel="tag">imageView</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
   
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/03/07/firstBlog/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">git push时出现permission denied.</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
 </section>
-
-
       <footer class="footer">
   <div class="outer">
     <ul class="list-inline">
@@ -195,6 +426,30 @@
 </script>
 
 
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
 
 
 

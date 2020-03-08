@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>collectionViewCell_frame_change</title>
+    <url>/2020/03/09/collectionViewCell-frame-change/</url>
+    <content><![CDATA[<h2 id="collectionViewCell-中元素大小变化"><a href="#collectionViewCell-中元素大小变化" class="headerlink" title="collectionViewCell 中元素大小变化"></a>collectionViewCell 中元素大小变化</h2><p>  故事从某次在cell中添加了一个imageView说起。图片的大小、cell大小都给予了约束。但是在复用时仍然出现cell大小更改的情况。</p>
+<p>  经过百度，发现有以下情况kennel导致：</p>
+<ol>
+<li><p>** 再不知道我哪里没有加好约束; **</p>
+</li>
+<li><p>** cell复用时没有做好相对应的处理；**</p>
+</li>
+<li><p>** 不知道原因的疑难杂症。**</p>
+<p>第一个原因在之前就被我排除了。因为他们的大小都是被固定的。之后就是cell复用时的处理，每一个cell我都用利用其类名作为其tag（我的类都只在一个cel中使用，所以不会出现错误）。<br>在这种情况仍然无法解决的情况下，我开始一步一步的寻找我的cell中imageView的bounds更改的时机。在单步执行加上po出值之后，发现在复用中bounds完全没有问题。但是返回后却突然就出现了更改。<br>最后，找了一位大佬来帮我看，发现是我命名的问题。我的命名就是           <code>UIImageView* imageView</code><br><strong>* 这导致我的图像与系统默认的图像出现了重复。所以在返回时，系统无法分辨，导致我的imageView大小复用时出现变化。*</strong></p>
+<h3 id="当然，这里还有一个小插曲。"><a href="#当然，这里还有一个小插曲。" class="headerlink" title="当然，这里还有一个小插曲。"></a>当然，这里还有一个小插曲。</h3><p>在我更改了我的imageView的命名后，仍然出现了这个问题。那么这个时候问题出现在哪里呢？<br>因为我是用的xib来做的cell，所以有将视图与定义连起来，在更改了命名后，连接中的命名仍然未更改，导致大小错乱。这个时候，就需要删除连线，重来一次即可！<br>到此，cell复用中的问题解决。</p>
+<h3 id="回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！"><a href="#回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！" class="headerlink" title="回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！"></a>回过头来，这种问题不只会出现在imageView中，只要是和cell相关，出现此类问题时，大家都可以看一下是否有此原因！</h3></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Ios开发</category>
+      </categories>
+      <tags>
+        <tag>Ios</tag>
+        <tag>collectionViewCell</tag>
+        <tag>imageView</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git push时出现permission denied.</title>
     <url>/2020/03/07/firstBlog/</url>
     <content><![CDATA[<h2 id="事情发生在某次使用terminal提交git时"><a href="#事情发生在某次使用terminal提交git时" class="headerlink" title="事情发生在某次使用terminal提交git时"></a>事情发生在某次使用terminal提交git时</h2><p>  当时  <strong>git push -u origin tmp</strong>  后突然报错。<br>  刚开始我还以为是我的文件中出现了冲突或者是我的命令出错了。然后转而使用sourceTree进行提交。也报错。出现了以下错误。<br><img src="/images/blog1_gitPush.png" alt="git提交报错"><br>  同时，我发现在sourceTree中我的代码仍然只是提交了本地，远端并没有出现我的提交。谷歌百度了很多解决方案。包括本地新建lock文件，寻找引用ref文件并删除，最后发现并没有用<del>主要是我没找到ref文件</del>。<br>  最后没有办法的我只能使用企业文化，备份好文件后把库删了重新拉了一个。然后就惊奇的发现，远端出现了我刚刚显示未提交的的代码！<br>  最后我推测应该是我提交时重复提交了。系统收到了我的文件但是并没有改flag。导致我显示文件未提交到远端，同时无法再次提交此次更新。<br>  所以大家以后出现相同的错误，不妨备份一下，直接重拉一个库。省时又好用。</p>
